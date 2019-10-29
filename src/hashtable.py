@@ -30,7 +30,7 @@ class HashTable:
         '''
         Hash an arbitrary key using DJB2 hash
         '''
-        
+
         '''
         OPTIONAL STRETCH: Research and implement DJB2
         '''
@@ -53,6 +53,10 @@ class HashTable:
 
         Fill this in.
         '''
+        #provide integer index from the hash method with a given key
+        index = self.hash_mod(key)
+
+        #
         pass
 
 
