@@ -29,7 +29,9 @@ class HashTable:
     def _hash_djb2(self, key):
         '''
         Hash an arbitrary key using DJB2 hash
-
+        '''
+        
+        '''
         OPTIONAL STRETCH: Research and implement DJB2
         '''
         pass
