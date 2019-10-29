@@ -54,10 +54,16 @@ class HashTable:
         Fill this in.
         '''
         #provide integer index from the hash method with a given key
-        index = self.hash_mod(key)
-
-        #
-        pass
+        index = self._hash_mod(f"key, {key}")
+        print(key)
+        #create a new node with linkedpair when method is invoked using the key and value
+        node = LinkedPair(key, value)
+        print(f"key, {key}, value, {value}")
+        #we need to attach it a next property that uses storage to dip it into a bucket
+        node.next = self.storage[index]
+        #now we can swap
+        self.storage[index] = node
+        print(f"node: {node}")
 
 
 
@@ -80,6 +86,15 @@ class HashTable:
 
         Fill this in.
         '''
+        index = self._hash_mod(key)
+        print(f"index: {index}")
+        #check for value
+        #if self.storage[index] == key
+            #set to a var curr_pair to self.storage;
+            #begin while for current_pair:
+            #iterate through and check curr_pair[key] to == key
+            #then return the value of curr_pair
+            #curr.pair to curr.next
         pass
 
 
