@@ -80,7 +80,7 @@ class HashTable:
         if self.storage[index] is None:
             print("Not there")
 
-        #make remove the has, then attach it to next
+        #make remove the hash, then attach it to next
         remove = self.storage[index]
         self.storage[index] = remove.next
 
