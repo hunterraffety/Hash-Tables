@@ -54,7 +54,7 @@ class HashTable:
         Fill this in.
         '''
         #provide integer index from the hash method with a given key
-        index = self._hash_mod(f"key, {key}")
+        index = self._hash_mod(key)
         print(key)
         #create a new node with linkedpair when method is invoked using the key and value
         node = LinkedPair(key, value)
@@ -75,7 +75,14 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+        #check in storage to see if the key is there
+        if self.storage[index] is None:
+            print("Not there")
+
+        #make remove the has, then attach it to next
+        remove = self.storage[index]
+        self.storage[index] = remove.next
 
 
     def retrieve(self, key):
@@ -86,8 +93,7 @@ class HashTable:
 
         Fill this in.
         '''
-        index = self._hash_mod(key)
-        print(f"index: {index}")
+        #print(f"index: {index}")
         #check for value
         #if self.storage[index] == key
             #set to a var curr_pair to self.storage;
@@ -95,7 +101,17 @@ class HashTable:
             #iterate through and check curr_pair[key] to == key
             #then return the value of curr_pair
             #curr.pair to curr.next
-        pass
+        
+        index = self._hash_mod(key)
+        
+        current_pair = self.storage[index]
+
+        while current_pair:
+            if current_pair.key == key:
+                return current_pair.value
+            current_pair = current_pair.next
+
+        return None
 
 
     def resize(self):
@@ -105,7 +121,9 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        #capacity holds the amount of storage, so by looping through it, we can append and for it to rehash the table by triggering it again
+        for i in range(self.capacity):
+            self.storage.append(None)
 
 
 
