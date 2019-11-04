@@ -29,7 +29,9 @@ class HashTable:
     def _hash_djb2(self, key):
         '''
         Hash an arbitrary key using DJB2 hash
+        '''
 
+        '''
         OPTIONAL STRETCH: Research and implement DJB2
         '''
         pass
@@ -51,7 +53,17 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        #provide integer index from the hash method with a given key
+        index = self._hash_mod(key)
+        print(key)
+        #create a new node with linkedpair when method is invoked using the key and value
+        node = LinkedPair(key, value)
+        print(f"key, {key}, value, {value}")
+        #we need to attach it a next property that uses storage to dip it into a bucket
+        node.next = self.storage[index]
+        #now we can swap
+        self.storage[index] = node
+        print(f"node: {node}")
 
 
 
@@ -63,7 +75,14 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+        #check in storage to see if the key is there
+        if self.storage[index] is None:
+            print("Not there")
+
+        #make remove the hash, then attach it to next
+        remove = self.storage[index]
+        self.storage[index] = remove.next
 
 
     def retrieve(self, key):
@@ -74,7 +93,25 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        #print(f"index: {index}")
+        #check for value
+        #if self.storage[index] == key
+            #set to a var curr_pair to self.storage;
+            #begin while for current_pair:
+            #iterate through and check curr_pair[key] to == key
+            #then return the value of curr_pair
+            #curr.pair to curr.next
+        
+        index = self._hash_mod(key)
+        
+        current_pair = self.storage[index]
+
+        while current_pair:
+            if current_pair.key == key:
+                return current_pair.value
+            current_pair = current_pair.next
+
+        return None
 
 
     def resize(self):
@@ -84,7 +121,9 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        #capacity holds the amount of storage, so by looping through it, we can append and for it to rehash the table by triggering it again
+        for i in range(self.capacity):
+            self.storage.append(None)
 
 
 
